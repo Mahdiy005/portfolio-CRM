@@ -37,7 +37,7 @@
     <!-- contact section ends here -->
 
     <!-- now we will make back to top button when user click on it it will be redirected to top page  -->
-    <x-return-btn />
+    <x-return-btn><i class="bi bi-arrow-up"></i></x-return-btn>
 
     <!-- footer section starts  -->
     @include('partials.footer')

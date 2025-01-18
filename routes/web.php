@@ -7,8 +7,12 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/admin', function () {
+    return view('auth.login');
+});
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboared.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
