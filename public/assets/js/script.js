@@ -1,4 +1,6 @@
-// htmlcss progress circular bar 
+// htmlcss progress circular bar
+
+
 let htmlProgress = document.querySelector(".html-css"),
   htmlValue = document.querySelector(".html-progress");
 
@@ -19,7 +21,7 @@ let progresshtml = setInterval(() => {
   }
 }, htmlspeed);
 
-// javasript progress circular bar 
+// javasript progress circular bar
 let javascriptProgress = document.querySelector(".javascript"),
   javascriptValue = document.querySelector(".javascript-progress");
 
@@ -40,7 +42,7 @@ let progressjs = setInterval(() => {
   }
 }, jsspeed);
 
-// php progress circular bar 
+// php progress circular bar
 let phpProgress = document.querySelector(".php"),
   phpValue = document.querySelector(".php-progress");
 
@@ -61,7 +63,7 @@ let progressphp = setInterval(() => {
   }
 }, phpspeed);
 
-// reactjs progress circular bar 
+// reactjs progress circular bar
 let reactProgress = document.querySelector(".reactjs"),
   reactValue = document.querySelector(".reactjs-progress");
 
@@ -113,12 +115,12 @@ document.addEventListener("DOMContentLoaded", function(){
         document.getElementById('navbar-top').classList.remove('fixed-top');
          // remove padding top from body
         document.body.style.paddingTop = '0';
-      } 
+      }
   });
-}); 
+});
 
 
-// adding funtionality to back to top button 
+// adding funtionality to back to top button
 
 //Get the button
 let mybutton = document.getElementById("btn-back-to-top");
