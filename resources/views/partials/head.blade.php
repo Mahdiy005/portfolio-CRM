@@ -20,6 +20,7 @@
     <!-- bootstrap icon cdn link  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css" />
 
+    <link rel="stylesheet" href="{{ asset('fontawesome-free-6.7.2-web/css') }}/all.min.css">
     <!-- for adding animation to website we have use AOS library
     AOS Library css file cdn link -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />

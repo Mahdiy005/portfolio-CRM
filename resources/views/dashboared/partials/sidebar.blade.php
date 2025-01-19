@@ -50,8 +50,10 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="py-2 bg-white rounded collapse-inner">
                 <h6 class="collapse-header">Expertise:</h6>
-                <a class="collapse-item" href="utilities-color.html">Show All Experience</a>
-                <a class="collapse-item" href="utilities-border.html">Add New Experience</a>
+                <a class="collapse-item" href="{{ route('experienc-section.edit.headers') }}">Edit Headers</a>
+                <a class="collapse-item" href="{{ route('experienc.show') }}">Show All Experience</a>
+                <a class="collapse-item" href="{{ route('experienc.create') }}">Add New Experience</a>
+                {{-- <a class="collapse-item" href="utilities-border.html" disable>Disable Section</a> --}}
             </div>
         </div>
     </li>
