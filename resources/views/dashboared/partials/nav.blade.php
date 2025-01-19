@@ -178,10 +178,14 @@
                     Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <form action="{{ route('logout') }}" method="post" id="del-form">
+                    @csrf
+                    <a class="dropdown-item" href="javascript:$('#del-form').submit()">
                     <i class="mr-2 text-gray-400 fas fa-sign-out-alt fa-sm fa-fw"></i>
                     Logout
                 </a>
+                </form>
+
             </div>
         </li>
 

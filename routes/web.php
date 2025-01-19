@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LandingSectionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\PreventIfNotAuthMiddleWare;
 use App\Models\LandingSection;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,7 @@ Route::get('/admin', function () {
 });
 
 // LANDING ROUTES
-Route::controller(LandingSectionController::class)->name('landing.')->prefix('landing')->group(function () {
+Route::controller(LandingSectionController::class)->middleware(PreventIfNotAuthMiddleWare::class)->name('landing.')->prefix('landing')->group(function () {
     Route::get('/show', 'show')->name('show');
     Route::get('/edit', 'edit')->name('edit');
     Route::put('/edit/{landingSection}', 'update')->name('update');
