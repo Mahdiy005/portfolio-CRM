@@ -1,18 +1,29 @@
 <?php
 
+use App\Http\Controllers\LandingSectionController;
 use App\Http\Controllers\ProfileController;
+use App\Models\LandingSection;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
-});
+    $landingData = LandingSection::first();
+    return view('home', compact('landingData'));
+})->name('home');
 
 Route::get('/admin', function () {
     return view('auth.login');
 });
 
+// LANDING ROUTES
+Route::controller(LandingSectionController::class)->name('landing.')->prefix('landing')->group(function () {
+    Route::get('/show', 'show')->name('show');
+    Route::get('/edit', 'edit')->name('edit');
+    Route::put('/edit/{landingSection}', 'update')->name('update');
+});
+
 Route::get('/dashboard', function () {
-    return view('dashboared.index');
+    $data = LandingSection::first();
+    return view('dashboared.index', compact('data'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

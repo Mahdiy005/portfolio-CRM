@@ -34,8 +34,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="py-2 bg-white rounded collapse-inner">
                 <h6 class="collapse-header">Actions</h6>
-                <a class="collapse-item" href="buttons.html">Show Current Data</a>
-                <a class="collapse-item" href="cards.html">Edit</a>
+                <a class="collapse-item" href="{{ route('landing.show') }}">Show Current Data</a>
+                <a class="collapse-item" href="{{ route('landing.edit') }}">Edit</a>
             </div>
         </div>
     </li>
