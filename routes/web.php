@@ -4,16 +4,20 @@ use App\Http\Controllers\ExperiencController;
 use App\Http\Controllers\ExperiencSectionController;
 use App\Http\Controllers\LandingSectionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SkillController;
+use App\Http\Controllers\SkillSectionController;
 use App\Http\Middleware\PreventIfNotAuthMiddleWare;
 use App\Models\ExperiencSection;
 use App\Models\LandingSection;
+use App\Models\SkillSection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $landingData = LandingSection::first();
     $expertiseSectionData = ExperiencSection::first();
-    return view('home', compact('landingData', 'expertiseSectionData'));
+    $skillSectionData = SkillSection::first();
+    return view('home', compact('landingData', 'expertiseSectionData', 'skillSectionData'));
 })->name('home');
 
 Route::get('/admin', function () {
@@ -33,20 +37,52 @@ Route::controller(LandingSectionController::class)->middleware(PreventIfNotAuthM
 
 
 // SECTION EXPERIEMNCE
-Route::controller(ExperiencSectionController::class)->middleware(PreventIfNotAuthMiddleWare::class)->name('experienc-section.')->prefix('section-experinec')->group(function () {
-    Route::get('/edit-headers', 'editHedaers')->name('edit.headers');
-    Route::put('/edit-headers/{experiencSection}', 'updateHedaers')->name('upadate.headers');
-});
+Route::controller(ExperiencSectionController::class)
+    ->middleware(PreventIfNotAuthMiddleWare::class)
+    ->name('experienc-section.')
+    ->prefix('section-experinec')
+    ->group(function () {
+        Route::get('/edit-headers', 'editHedaers')->name('edit.headers');
+        Route::put('/edit-headers/{experiencSection}', 'updateHedaers')->name('upadate.headers');
+    });
 
 // EXPERIENCE TABEL
-Route::controller(ExperiencController::class)->middleware(PreventIfNotAuthMiddleWare::class)->name('experienc.')->prefix('experinec')->group(function () {
-    Route::get('/create', 'create')->name('create');
-    Route::post('/store', 'store')->name('store');
-    Route::get('/show', 'show')->name('show');
-    Route::get('/edit/{id}', 'edit')->name('edit');
-    Route::put('/update/{id}', 'update')->name('update');
-    Route::delete('/delete/{id}', 'destroy')->name('destroy');
-});
+Route::controller(ExperiencController::class)
+    ->middleware(PreventIfNotAuthMiddleWare::class)
+    ->name('experienc.')
+    ->prefix('experinec')
+    ->group(function () {
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/show', 'show')->name('show');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::put('/update/{id}', 'update')->name('update');
+        Route::delete('/delete/{id}', 'destroy')->name('destroy');
+    });
+
+// SKILLS SECTION ROUTES
+Route::controller(SkillSectionController::class)
+    ->name('skill.')
+    ->prefix('skill-section')
+    ->middleware(PreventIfNotAuthMiddleWare::class)
+    ->group(function () {
+        Route::get('/edit', 'edit')->name('edit-section');
+        Route::put('/edit/{id}', 'update')->name('update');
+    });
+
+// SKILLS ROUTES
+Route::controller(SkillController::class)
+    ->name('skill-table.')
+    ->prefix('skill-table')
+    ->middleware(PreventIfNotAuthMiddleWare::class)
+    ->group(function () {
+        Route::get('/create', 'create')->name('create');
+        Route::post('/create', 'store')->name('store');
+        Route::get('/show', 'show')->name('show');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::put('/update/{id}', 'update')->name('update');
+        Route::delete('/delete/{id}', 'destroy')->name('destroy');
+    });
 
 Route::get('/dashboard', function () {
     $data = LandingSection::first();

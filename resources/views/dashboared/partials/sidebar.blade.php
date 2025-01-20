@@ -68,8 +68,9 @@
         <div id="collapseSkills" class="collapse" aria-labelledby="headingSkills" data-parent="#accordionSidebar">
             <div class="py-2 bg-white rounded collapse-inner">
                 <h6 class="collapse-header">Skills:</h6>
-                <a class="collapse-item" href="utilities-color.html">Show All Skills</a>
-                <a class="collapse-item" href="utilities-border.html">Add New Skill</a>
+                <a class="collapse-item" href="{{ route('skill.edit-section') }}">Edit Main Headers</a>
+                <a class="collapse-item" href="{{ route('skill-table.show') }}">Show All Skills</a>
+                <a class="collapse-item" href="{{ route('skill-table.create') }}">Add New Skill</a>
             </div>
         </div>
     </li>
