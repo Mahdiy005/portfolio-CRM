@@ -85,8 +85,11 @@
         <div id="collapseProjects" class="collapse" aria-labelledby="headingProjects" data-parent="#accordionSidebar">
             <div class="py-2 bg-white rounded collapse-inner">
                 <h6 class="collapse-header">Projects:</h6>
-                <a class="collapse-item" href="utilities-color.html">Show All Projects</a>
-                <a class="collapse-item" href="utilities-border.html">Add New Project</a>
+                <a class="collapse-item" href="{{ route('work.index') }}">Show All Projects</a>
+                <a class="collapse-item" href="{{ route('category.show') }}">Show All Categories</a>
+                <a class="collapse-item" href="{{ route('work-section.editWorkHeaders') }}">Edit Headers</a>
+                <a class="collapse-item" href="{{ route('work.create') }}">Add New Project</a>
+                <a class="collapse-item" href="{{ route('category.create') }}">Add New Category</a>
             </div>
         </div>
     </li>
