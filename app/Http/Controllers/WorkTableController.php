@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Technology;
 use App\Models\WorkTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -30,7 +31,8 @@ class WorkTableController extends Controller
             'categories.*' => 'required|exists:categories,id',
             'image' => 'required',
             'github_link' => 'required',
-            'work_section_id' => ''
+            'work_section_id' => '',
+            'tech_used' => ''
         ]);
         $image = $request->image;
         $newImgName = time() . '-' . $image->getClientOriginalName();
@@ -43,6 +45,16 @@ class WorkTableController extends Controller
             'github_link' => $data['github_link'],
             'work_section_id' => $data['work_section_id']
         ]);
+
+        if(isset($data['tech_used'])) {
+            $tech_names = explode(',', $data['tech_used']);
+            foreach ($tech_names as $tech) {
+                Technology::create([
+                    'name' => trim($tech),
+                    'work_table_id' => $workTable->id,
+                ]);
+            }
+        }
 
         $workTable->categories()->attach($data['categories']);
         return back()->with('createWorkStatus', 'New Project Added Succefully');
@@ -70,6 +82,7 @@ class WorkTableController extends Controller
             'categories' => 'nullable|array',
             'categories.*' => 'exists:categories,id',
             'image' => 'nullable|image|max:2048',
+            'tech_used' => ''
         ]);
         if($request->hasFile('image')) {
             if(Storage::exists('public/projects/' . $workTable->image)) {
@@ -83,6 +96,19 @@ class WorkTableController extends Controller
 
         if(isset($data['categories'])) {
             $workTable->categories()->sync($data['categories']);
+        }
+
+        if(isset($data['tech_used'])) {
+            // remove the old technology
+            $workTable->technologies()->delete();
+            // add new technology
+            $tech_names = explode(',', $data['tech_used']);
+            foreach ($tech_names as $tech) {
+                Technology::create([
+                    'name' => trim($tech),
+                    'work_table_id' => $workTable->id,
+                ]);
+            }
         }
 
         $workTable->update($data);

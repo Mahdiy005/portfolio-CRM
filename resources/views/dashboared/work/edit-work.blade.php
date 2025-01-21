@@ -24,14 +24,14 @@
             <div class="form-group">
                 <label for="name">Work Name:</label>
                 <input type="text" class="form-control" id="name" name="name"
-                       value="{{ old('name', $workTable->name) }}" required>
+                    value="{{ old('name', $workTable->name) }}" required>
             </div>
 
             <!-- GitHub Link -->
             <div class="mt-3 form-group">
                 <label for="github_link">GitHub Link:</label>
                 <input type="url" class="form-control" id="github_link" name="github_link"
-                       value="{{ old('github_link', $workTable->github_link) }}" required>
+                    value="{{ old('github_link', $workTable->github_link) }}" required>
             </div>
 
             <!-- Categories -->
@@ -47,20 +47,24 @@
                 </select>
             </div>
 
+            <!-- Display Current Technologies -->
+            <div class="mt-3 form-group">
+                <label for="tech_used">Technology Used:</label>
+                <input type="text" class="form-control-file" id="tech_used" name="tech_used"
+                    value="{{ $workTable->technologies()->pluck('name')->implode(', ') }}">
+            </div>
+
             <!-- Current Image -->
             <div class="mt-3 form-group">
                 <label>Current Image:</label>
                 <div>
                     <img src="{{ asset('storage/projects/' . $workTable->image) }}" alt="Current Image"
-                         class="img-thumbnail" style="max-width: 200px;">
+                        class="img-thumbnail" style="max-width: 200px;">
                 </div>
             </div>
 
+
             <!-- Upload New Image -->
-            <div class="mt-3 form-group">
-                <label for="image">New Image (optional):</label>
-                <input type="file" class="form-control-file" id="image" name="image">
-            </div>
 
             <!-- Submit Button -->
             <button type="submit" class="mt-4 btn btn-primary">Update Work</button>

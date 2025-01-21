@@ -17,6 +17,12 @@ class WorkTable extends Model
     {
         return $this->belongsToMany(Category::class, 'category_work', 'work_table_id', 'category_id');
     }
+
+    public function technologies()
+    {
+        return $this->hasMany(Technology::class, 'work_table_id', 'id');
+    }
 }
 //$workTable->workSection
 // workTable->categories
+// workTable->technologies
