@@ -7,6 +7,8 @@ use App\Http\Controllers\LandingSectionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\SkillSectionController;
+use App\Http\Controllers\TestimonialSectionController;
+use App\Http\Controllers\TestimonialTableController;
 use App\Http\Controllers\WorkSectionController;
 use App\Http\Controllers\WorkTableController;
 use App\Http\Middleware\PreventIfNotAuthMiddleWare;
@@ -14,6 +16,8 @@ use App\Models\Category;
 use App\Models\ExperiencSection;
 use App\Models\LandingSection;
 use App\Models\SkillSection;
+use App\Models\TestimonialSection;
+use App\Models\TestimonialTable;
 use App\Models\WorkSection;
 use App\Models\WorkTable;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +29,8 @@ Route::get('/', function () {
     $skillSectionData = SkillSection::first();
     $workSectionData = WorkSection::first();
     $categories = Category::all();
-    return view('home', compact('landingData', 'expertiseSectionData', 'skillSectionData', 'workSectionData', 'categories'));
+    $testimonialsData = TestimonialSection::first();
+    return view('home', compact('landingData', 'expertiseSectionData', 'skillSectionData', 'workSectionData', 'categories', 'testimonialsData'));
 })->name('home');
 
 Route::get('/admin', function () {
@@ -131,6 +136,30 @@ Route::controller(WorkTableController::class)
     Route::post('/store', 'store')->name('store');
 });
 
+// Testimonials Section ROUTES
+Route::controller(TestimonialSectionController::class)
+->name('test-section.')
+->prefix('test-section')
+->middleware(PreventIfNotAuthMiddleWare::class)
+->group(function () {
+    Route::get('/edit-headers', 'editHeaders')->name('editHeadrs');
+    Route::put('/update-headers/{id}', 'updateHeaders')->name('updateHeadrs');
+});
+
+
+// Testimonials Section ROUTES
+Route::controller(TestimonialTableController::class)
+->name('test-table.')
+->prefix('test-test')
+->middleware(PreventIfNotAuthMiddleWare::class)
+->group(function () {
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/show', 'index')->name('index');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::put('/update/{id}', 'update')->name('update');
+    Route::delete('/destroy/{id}', 'destroy')->name('destroy');
+});
 
 
 Route::get('/dashboard', function () {

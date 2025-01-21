@@ -106,8 +106,9 @@
             data-parent="#accordionSidebar">
             <div class="py-2 bg-white rounded collapse-inner">
                 <h6 class="collapse-header">Testimonials:</h6>
-                <a class="collapse-item" href="utilities-color.html">Show All Testimonials</a>
-                <a class="collapse-item" href="utilities-border.html">Add New Testimonial</a>
+                <a class="collapse-item" href="{{ route('test-table.index') }}">Show All Testimonials</a>
+                <a class="collapse-item" href="{{ route('test-section.editHeadrs') }}">Edit Headers</a>
+                <a class="collapse-item" href="{{ route('test-table.create') }}">Add New Testimonial</a>
             </div>
         </div>
     </li>
