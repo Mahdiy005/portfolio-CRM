@@ -20,6 +20,9 @@
                 @endif
             </select>
 
+            <label for="tech_used">Technology Used:</label>
+            <input type="text" name="tech_used" id="tech_used" class="mb-3 form-control" placeholder="html, css, js">
+
             <label for="image">Section Image:</label>
             <input type="file" name="image" id="image" class="mb-3 form-control">
 
