@@ -3,6 +3,8 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BlogSectionController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactSectionController;
+use App\Http\Controllers\ContactTableController;
 use App\Http\Controllers\ExperiencController;
 use App\Http\Controllers\ExperiencSectionController;
 use App\Http\Controllers\LandingSectionController;
@@ -16,6 +18,7 @@ use App\Http\Controllers\WorkTableController;
 use App\Http\Middleware\PreventIfNotAuthMiddleWare;
 use App\Models\BlogSection;
 use App\Models\Category;
+use App\Models\ContactSection;
 use App\Models\ExperiencSection;
 use App\Models\LandingSection;
 use App\Models\SkillSection;
@@ -32,7 +35,8 @@ Route::get('/', function () {
     $categories = Category::all();
     $testimonialsData = TestimonialSection::first();
     $blogData = BlogSection::first();
-    return view('home', compact('landingData', 'expertiseSectionData', 'skillSectionData', 'workSectionData', 'categories', 'testimonialsData', 'blogData'));
+    $contactData = ContactSection::first();
+    return view('home', compact('landingData', 'expertiseSectionData', 'skillSectionData', 'workSectionData', 'categories', 'testimonialsData', 'blogData', 'contactData'));
 })->name('home');
 
 Route::get('/admin', function () {
@@ -188,6 +192,32 @@ Route::controller(BlogController::class)
     Route::delete('/destroy/{id}', 'destroy')->name('destroy');
 });
 
+
+// Contact Secrtion ROUTES
+Route::controller(ContactSectionController::class)
+->name('contact-section.')
+->prefix('contact-section')
+->middleware(PreventIfNotAuthMiddleWare::class)
+->group(function () {
+    // Route::get('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
+    // Route::get('/show', 'index')->name('index');
+    // Route::get('/blog-details/{id}', 'blogDeatils')->name('blogDeatils');
+    Route::get('/edit', 'edit')->name('edit');
+    Route::put('/update/{id}', 'updateHeaders')->name('updateHeaders');
+    // Route::delete('/destroy/{id}', 'destroy')->name('destroy');
+});
+
+// Contact Table ROUTES
+Route::controller(ContactTableController::class)
+->name('contact-table.')
+->prefix('contact-table')
+->middleware(PreventIfNotAuthMiddleWare::class)
+->group(function () {
+    Route::post('/store', 'store')->name('store');
+    Route::get('/show', 'index')->name('index');
+    Route::delete('/destroy/{id}', 'destroyContact')->name('destroyContact');
+});
 
 Route::get('/dashboard', function () {
     $data = LandingSection::first();
