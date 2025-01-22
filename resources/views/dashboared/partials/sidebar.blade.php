@@ -9,13 +9,6 @@
     <!-- Divider -->
     <hr class="my-0 sidebar-divider">
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -45,14 +38,14 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Expertise Section</span>
+            <span>Services Section</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="py-2 bg-white rounded collapse-inner">
-                <h6 class="collapse-header">Expertise:</h6>
+                <h6 class="collapse-header">Services:</h6>
                 <a class="collapse-item" href="{{ route('experienc-section.edit.headers') }}">Edit Headers</a>
-                <a class="collapse-item" href="{{ route('experienc.show') }}">Show All Experience</a>
-                <a class="collapse-item" href="{{ route('experienc.create') }}">Add New Experience</a>
+                <a class="collapse-item" href="{{ route('experienc.show') }}">Show All Services</a>
+                <a class="collapse-item" href="{{ route('experienc.create') }}">Add New Services</a>
                 {{-- <a class="collapse-item" href="utilities-border.html" disable>Disable Section</a> --}}
             </div>
         </div>

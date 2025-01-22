@@ -219,6 +219,8 @@ Route::controller(ContactTableController::class)
     Route::delete('/destroy/{id}', 'destroyContact')->name('destroyContact');
 });
 
+
+
 Route::get('/dashboard', function () {
     $data = LandingSection::first();
     return view('dashboared.index', compact('data'));
