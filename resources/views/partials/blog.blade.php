@@ -1,60 +1,31 @@
 <section class="pb-5 mt-5 blog" id="blog">
     <div class="pt-5 text-center heading">
-        <small>Latest News</small>
-        <h3>Blog & Articles</h3>
+        <small>{{ $blogData->title }}</small>
+        <h3>{{ $blogData->sub_title }}</h3>
     </div>
     <div class="px-4 mt-4 row justify-content-evenly" data-aos="fade-up">
-        <div class="mt-2 blogpost col-md-4 col-10 mt-md-0 game all">
-            <div class="card">
-                <img src="{{ asset('assets') }}/images/2048game.png" class="card-img-top rounded-4" alt="..." />
-                <div class="px-4 card-body">
-                    <small>By Pawan Kumavat</small><span class="ms-3">Mar 8,2022</span>
-                    <h4 class="card-title">
-                        <a href="">Quis autem vea eum iure reprehenderit</a>
-                    </h4>
-                    <p class="text-muted">
-                        Dolor repellendus temporibus autem quibusdam officiis debitis
-                        rerum nece aibus minima veniam.
-                    </p>
-                    <a href="#" class="read-more-btn link" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal1">Read More</a>
+        @if (count($blogData->blogs) > 0)
+            @foreach ($blogData->blogs as $blog)
+            <div class="mt-2 blogpost col-md-4 col-10 mt-md-0 game all">
+                <div class="card">
+                    <img src="{{ asset('storage/blogs') }}/{{ $blog->image }}" class="card-img-top rounded-4" alt="..." />
+                    <div class="px-4 card-body">
+                        <small>By {{ $blog->user_name }}</small><span class="ms-3">{{ $blog->created_at->format('M d,Y') }}</span>
+                        <h4 class="card-title">
+                            <a href="">{{ $blog->title }}</a>
+                        </h4>
+                        <p class="text-muted">
+                            {{ getFirstNWords($blog->content, 20) }}.....
+                        </p>
+                        <a href="{{ route('blog-table.blogDeatils', ['id'=>$blog->id]) }}" class="read-more-btn link"
+                            >Read More</a>
+
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="mt-5 blogpost col-md-4 col-10 mt-md-0 website all">
-            <div class="card">
-                <img src="{{ asset('assets') }}/images/currency-converter.png" class="card-img-top rounded-4" alt="..." />
-                <div class="px-4 card-body">
-                    <small>By Pawan Kumavat</small><span class="ms-3">Mar 8,2022</span>
-                    <h4 class="card-title">
-                        <a href="">Quis autem vea eum iure reprehenderit</a>
-                    </h4>
-                    <p class="text-muted">
-                        Dolor repellendus temporibus autem quibusdam officiis debitis
-                        rerum nece aibus minima veniam.
-                    </p>
-                    <a href="#" class="read-more-btn link" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal2">Read More</a>
-                </div>
-            </div>
-        </div>
-        <div class="mt-5 blogpost col-md-4 col-10 mt-md-0 webapp all">
-            <div class="card">
-                <img src="{{ asset('assets') }}/images/dictionary.png" class="card-img-top rounded-4" alt="..." />
-                <div class="px-4 card-body">
-                    <small>By Pawan Kumavat</small><span class="ms-3">Mar 8,2022</span>
-                    <h4 class="card-title">
-                        <a href="">Quis autem vea eum iure reprehenderit</a>
-                    </h4>
-                    <p class="text-muted">
-                        Dolor repellendus temporibus autem quibusdam officiis debitis
-                        rerum nece aibus minima veniam.
-                    </p>
-                    <a href="#" class="read-more-btn link" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal3">Read More</a>
-                </div>
-            </div>
-        </div>
+            @endforeach
+        @endif
+
         <!-- here we will make modals if Read more link is clicked the modal will popup -->
         <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
