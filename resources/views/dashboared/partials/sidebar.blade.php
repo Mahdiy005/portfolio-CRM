@@ -125,8 +125,9 @@
                 data-parent="#accordionSidebar">
                 <div class="py-2 bg-white rounded collapse-inner">
                     <h6 class="collapse-header">Blog:</h6>
-                    <a class="collapse-item" href="utilities-color.html">Show All Blog</a>
-                    <a class="collapse-item" href="utilities-border.html">Add New Blog</a>
+                    <a class="collapse-item" href="{{ route('blog-table.index') }}">Show All Blog</a>
+                    <a class="collapse-item" href="{{ route('blog-table.create') }}">Add New Blog</a>
+                    <a class="collapse-item" href="{{ route('blog-section.editHeadrs') }}">Edit Headers</a>
                 </div>
             </div>
         </li>
