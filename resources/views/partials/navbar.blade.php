@@ -13,10 +13,10 @@
                     <a class="nav-link" href="#service">Service</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#about">About</a>
+                    <a class="nav-link" href="#about">Skills</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#portfolio">Portfolio</a>
+                    <a class="nav-link" href="#portfolio">Work</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#testimonial">Testimonials</a>
@@ -26,6 +26,6 @@
                 </li>
             </ul>
         </div>
-        <button class="px-4 py-2 c-btn ms-4 rounded-pill d-none d-md-block">Contact</button>
+        <a href="#contact" class="px-4 py-2 c-btn ms-4 rounded-pill d-none d-md-block">Contact</a>
     </div>
 </nav>
