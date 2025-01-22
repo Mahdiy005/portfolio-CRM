@@ -132,6 +132,23 @@
             </div>
         </li>
 
+            <!-- Nav Item - Contact -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseContact"
+                    aria-expanded="true" aria-controls="collapseContact">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Contact Section</span>
+                </a>
+                <div id="collapseContact" class="collapse" aria-labelledby="headingContact"
+                    data-parent="#accordionSidebar">
+                    <div class="py-2 bg-white rounded collapse-inner">
+                        <h6 class="collapse-header">Contact:</h6>
+                        <a class="collapse-item" href="{{ route('contact-table.index') }}">Show All Contact</a>
+                        <a class="collapse-item" href="{{ route('contact-section.edit') }}">Edit Headers</a>
+                    </div>
+                </div>
+            </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
